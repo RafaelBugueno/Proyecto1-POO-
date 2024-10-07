@@ -13,7 +13,7 @@ public class TF_pregunta extends Pregunta{
     
     //constructor
     TF_pregunta(String text,int peso,boolean respuesta){
-        super.(text,peso);
+        super(text,peso);
         this.respuestaCorrecta = respuesta;
     }
     
