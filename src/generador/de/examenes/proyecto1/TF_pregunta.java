@@ -10,10 +10,11 @@ package generador.de.examenes.proyecto1;
  */
 public class TF_pregunta extends Pregunta{
     public boolean respuestaCorrecta;
+    static String identificador="introduzca T para verdadero o F para falso";
     
     //constructor
     TF_pregunta(String text,int peso,boolean respuesta){
-        super(text,peso);
+        super(text,peso,identificador);
         this.respuestaCorrecta = respuesta;
     }
     
