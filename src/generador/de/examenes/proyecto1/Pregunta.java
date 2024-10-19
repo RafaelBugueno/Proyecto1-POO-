@@ -1,17 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package generador.de.examenes.proyecto1;
 
-/**
- *
- * @author ULS36409
- */
 public abstract class Pregunta {
     private int peso;
     public String text;
     public String textIdentificador;
+    public String respuestaCorrecta;
     
     //constructor
     Pregunta(String newText,int newPeso,String identificador){
@@ -30,6 +24,7 @@ public abstract class Pregunta {
     public String getText(){
         return text;
     }
+    abstract void printRespuestaCorrecta();
     abstract boolean buscar(String respuesta);
 }
 
