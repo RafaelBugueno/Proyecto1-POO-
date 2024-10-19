@@ -1,25 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package generador.de.examenes.proyecto1;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author ULS36409
- */
-public class Seleccion_Mult_Pregunta extends Pregunta{
-    int respuestaCorrecta;
+public class Seleccion_Mult_Pregunta extends Pregunta {
+    public int respuestaCorrecta;
     ArrayList <String> alternativas;
     static String identificador="introduzca la alternativa correcta";
     
     //constructor
-    Seleccion_Mult_Pregunta(String pregunta, int peso, ArrayList<String> newAlternativas,int respuesta){
+    Seleccion_Mult_Pregunta(String pregunta, int peso, int respuesta){
         super(pregunta,peso,identificador);
-        this.alternativas=newAlternativas;
-        this.respuestaCorrecta=respuesta;
+        this.respuestaCorrecta = respuesta;
     }
     
     @Override
@@ -42,7 +34,12 @@ public class Seleccion_Mult_Pregunta extends Pregunta{
         else{
             return false;
         }
-       
         return(alternativa==respuestaCorrecta);
+    }
+
+    @Override
+    public void printRespuestaCorrecta() {
+        char alternativaCorrecta = (char) (97 + respuestaCorrecta);
+        System.out.println(alternativaCorrecta);
     }
 }
