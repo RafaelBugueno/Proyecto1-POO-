@@ -38,7 +38,7 @@ public class CatalogoPreguntas {
         "¿El órgano más grande del cuerpo humano es el cerebro?",
         "¿'Blancanieves y los siete enanitos' es la primera película de Disney?"
     ));
-    public ArrayList<String> respuestas_TF = new ArrayList<>(Arrays.asList("f", "f", "t", "t", "f", "f", "f", "t", "f", "f", "f", "t", "t", "t", "t", "t", "f", "t", "t", "f", "f", "t"));
+    public ArrayList<String> respuestas_TF = new ArrayList<>(Arrays.asList("f", "f", "t", "t", "f", "f", "f", "t", "f", "t", "f", "t", "t", "t", "t", "t", "f", "t", "t", "f", "f", "t"));
     public ArrayList<String> enunciados_SM = new ArrayList<>(Arrays.asList(
         "¿Cuál es el nombre del río más largo del mundo?\n\ta) Río Nilo\n\tb) Río Amazonas\n\tc) Río Danubio\n\td) Río Misisipi",
         "¿Cuál es el océano más grande del mundo?\n\ta) Océano Pacífico\n\tb) Océano Índico\n\tc) Océano Ártico\n\td) Océano Atlántico",
