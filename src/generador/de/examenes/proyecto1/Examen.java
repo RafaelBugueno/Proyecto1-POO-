@@ -7,9 +7,9 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Examen {
-    
+    //el catalogo de preguntas de cada tipo, del cual se escogeran 9 de manera equitativa
     // Enunciados y preguntas de cada tipo
-    private ArrayList<String> enunciados_TF = new ArrayList<>(Arrays.asList(
+    /*private ArrayList<String> enunciados_TF = new ArrayList<>(Arrays.asList(
         "¿China es el país más grande del mundo?",
         "¿Venus es el planeta más cercano al sol?",
         "¿La Tabla Periódica tiene 118 elementos?",
@@ -65,13 +65,14 @@ public class Examen {
         "¿Qué documento fundacional de los Estados Unidos fue firmado en 1776?"
     ));    
     private ArrayList<String> respuestas_RC = new ArrayList<>(Arrays.asList("1914", "1945", "Hiroshima", "1865", "Neil Armstrong", "Amazonas", "África", "Japón", "Pacífico", "Tokio", "Perú", "Emiratos Árabes Unidos", "China", "Sena", "Francia", "Grecia", "Absolutismo", "La Declaración de Independencia"));
-
+    */
+    //private CatalogoPreguntas catalogo= new CatalogoPreguntas();
     private ArrayList<Pregunta> preguntas = new ArrayList<>(); // Aquí se almacenan todas las preguntas creadas
     private ArrayList<String> respuestas = new ArrayList<>(); // Aquí se almacenan todas las respuestas del usuario
     int numPreguntas;
     int puntaje = 0, puntajeTotal = 0;
     
-    Examen(int numPreguntas) {
+    Examen(int numPreguntas,CatalogoPreguntas catalogo) {
 
         this.numPreguntas = numPreguntas;
 
@@ -81,7 +82,7 @@ public class Examen {
 
         // Creación de preguntas
         for (int i = 0; i < numPreguntas; i++) {
-            preguntas.add(this.crearPregunta(i % 3));
+            preguntas.add(this.crearPregunta(i % 3,catalogo));
         }
 
         // Realización de preguntas
@@ -96,29 +97,31 @@ public class Examen {
         this.displayRendimiento();
     }
     
-    public Pregunta crearPregunta(int item) {
+    public Pregunta crearPregunta(int item,CatalogoPreguntas catalogo) {
+        //el parametro item indica que tipo de pregunta sera,
+        //el constructor se encargara de ir rotando entre las 3 equitativamente
         Random random = new Random();
         int randomIndex;
         switch (item) {
             case 0: { // Verdadero o falso
-                randomIndex = random.nextInt(enunciados_TF.size());
-                Pregunta pregunta = new TF_pregunta(enunciados_TF.get(randomIndex), 2, respuestas_TF.get(randomIndex));
-                enunciados_TF.remove(randomIndex);
-                respuestas_TF.remove(randomIndex);
+                randomIndex = random.nextInt(catalogo.enunciados_TF.size());
+                Pregunta pregunta = new TF_pregunta(catalogo.enunciados_TF.get(randomIndex), 2, catalogo.respuestas_TF.get(randomIndex));
+                catalogo.enunciados_TF.remove(randomIndex);
+                catalogo.respuestas_TF.remove(randomIndex);
                 return pregunta;
             }
             case 1: { // Selección múltiple
-                randomIndex = random.nextInt(enunciados_SM.size());
-                Pregunta pregunta = new Seleccion_Mult_Pregunta(enunciados_SM.get(randomIndex), 1, respuestas_SM.get(randomIndex));
-                enunciados_SM.remove(randomIndex);
-                respuestas_SM.remove(randomIndex);
+                randomIndex = random.nextInt(catalogo.enunciados_SM.size());
+                Pregunta pregunta = new Seleccion_Mult_Pregunta(catalogo.enunciados_SM.get(randomIndex), 1, catalogo.respuestas_SM.get(randomIndex));
+                catalogo.enunciados_SM.remove(randomIndex);
+                catalogo.respuestas_SM.remove(randomIndex);
                 return pregunta;
             }
             case 2: { // Respuesta corta
-                randomIndex = random.nextInt(enunciados_RC.size());
-                Pregunta pregunta = new Respuesta_Corta_Pregunta(enunciados_RC.get(randomIndex), 3, respuestas_RC.get(randomIndex));
-                enunciados_RC.remove(randomIndex);
-                respuestas_RC.remove(randomIndex);
+                randomIndex = random.nextInt(catalogo.enunciados_RC.size());
+                Pregunta pregunta = new Respuesta_Corta_Pregunta(catalogo.enunciados_RC.get(randomIndex), 3, catalogo.respuestas_RC.get(randomIndex));
+                catalogo.enunciados_RC.remove(randomIndex);
+                catalogo.respuestas_RC.remove(randomIndex);
                 return pregunta;
             }
         }
